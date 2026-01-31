@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Business Card</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif
+}
+
+body{
+  margin:0;
+  background:#eef1f5;
+  display:flex;
+  justify-content:center;
+  padding-bottom:120px
+}
+
+/* CARD */
+.card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.18)
+}
+
+/* HEADER */
+.header{
+  position:relative;
+  height:300px;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.header img{
+  width:78%;
+  max-width:300px;
+  z-index:2;
+}
+
+/* CONTENT */
+.content{
+  padding:30px 26px 40px
+}
+
+/* NAME + LOGO */
+.name-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:28px
+}
+
+.name{
+  font-size:30px;
+  font-weight:700;
+  color:#111827;
+  padding-left:14px;
+  position:relative;
+  margin:0
+}
+
+.name:before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:4px;
+  width:3px;
+  height:85%;
+  background:#ef4444;
+  border-radius:4px
+}
+
+.name-logo img{
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  object-fit:cover
+}
+
+/* ROW */
+.row{
+  display:flex;
+  align-items:center;
+  margin-bottom:20px
+}
+
+.icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#ef4444;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:16px
+}
+
+.icon svg{
+  width:22px;
+  height:22px;
+  fill:#fff
+}
+
+.icon.whatsapp{
+  background:#25D366;
+}
+
+.text{
+  font-size:16px;
+  color:#111827
+}
+
+.sub{
+  font-size:13px;
+  color:#6b7280;
+  margin-top:2px
+}
+
+/* FLOATING SAVE */
+.floating-save{
+  position:fixed;
+  bottom:78px;
+  width:100%;
+  max-width:420px;
+  display:flex;
+  justify-content:center;
+  z-index:999
+}
+
+.floating-save button{
+  width:90%;
+  background:#ef4444;
+  color:#fff;
+  font-weight:700;
+  border:none;
+  padding:16px;
+  border-radius:14px;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 12px 25px rgba(239,68,68,.45)
+}
+
+/* FOOTER */
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  max-width:420px;
+  background:#f15a4a;
+  color:#fff;
+  text-align:center;
+  padding:14px;
+  font-size:14px;
+  border-top-left-radius:22px;
+  border-top-right-radius:22px
+}
+
+/* FORM OVERLAY */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:2000;
+  display:none;
+  flex-direction:column
+}
+
+.overlay-header{
+  padding:22px;
+  font-size:22px;
+  font-weight:700
+}
+
+.overlay form{
+  padding:0 22px 30px
+}
+
+.field{
+  margin-bottom:20px
+}
+
+.field label{
+  font-size:14px;
+  color:#6b7280;
+  display:block;
+  margin-bottom:6px
+}
+
+.field input{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #d1d5db;
+  padding:10px 0;
+  font-size:16px
+}
+
+.submit-btn{
+  margin-top:30px;
+  width:100%;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  padding:16px;
+  font-size:18px;
+  border-radius:14px;
+  font-weight:700
+}
+
+.privacy{
+  text-align:center;
+  font-size:13px;
+  color:#6b7280;
+  margin-top:14px
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="https://i.postimg.cc/fL7RP8Cm/Pics-Art-01-03-03-07-40.png" alt="Header Image">
+  </div>
+
+  <div class="content">
+
+    <div class="name-wrap">
+      <div class="name">Andrea Rey Y</div>
+      <div class="name-logo">
+        <img src="https://i.postimg.cc/ZRXXrmpV/my-logo-gen-3.jpg" alt="Logo">
+      </div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="row">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+          19.86 19.86 0 0 1-8.63-3.07
+          19.5 19.5 0 0 1-6-6
+          19.86 19.86 0 0 1-3.07-8.67
+          A2 2 0 0 1 4.11 2h3
+          a2 2 0 0 1 2 1.72
+          c.12.9.3 1.77.57 2.6
+          a2 2 0 0 1-.45 2.11L8.09 9.91
+          a16 16 0 0 0 6 6
+          l1.48-1.48
+          a2 2 0 0 1 2.11-.45
+          c.83.27 1.7.45 2.6.57
+          A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="text">+62 899 6977 888</div>
+        <div class="sub">Mobile</div>
+      </div>
+    </div>
+
+    <!-- WHATSAPP -->
+    <div class="row">
+      <div class="icon whatsapp">
+        <svg viewBox="0 0 32 32">
+          <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.18-.32.21-.6.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.53c-.18 0-.46.07-.7.35-.25.28-.92.9-.92 2.2s.94 2.55 1.07 2.73c.14.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.20 1.2.17 1.65.1.5-.07 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32zM16 3C8.82 3 3 8.6 3 15.5c0 2.73.95 5.26 2.53 7.3L4 29l6.4-1.68c1.94 1.03 4.16 1.61 5.6 1.61 7.18 0 13-5.6 13-12.5S23.18 3 16 3z"/>
+        </svg>
+      </div>
+      <div>
+        <a class="text" href="https://wa.me/16096160899" target="_blank" style="text-decoration:none;color:#111827">
+          +1 609 616 0899
+        </a>
+        <div class="sub">WhatsApp</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="floating-save">
+  <button onclick="openForm()">⬇️ SAVE CONTACT</button>
+</div>
+
+
+<!-- FORM -->
+<div class="overlay" id="formOverlay">
+  <div class="overlay-header">Share your information</div>
+
+  <form onsubmit="sendForm(event)">
+    <div class="field">
+      <label>Your name</label>
+      <input id="name" required>
+    </div>
+
+    <div class="field">
+      <label>Your email</label>
+      <input id="email" type="email" required>
+    </div>
+
+    <div class="field">
+      <label>Your phone number</label>
+      <input id="phone" required>
+    </div>
+
+    <button class="submit-btn">Continue</button>
+    <div class="privacy">🔒 Your data will always be kept private.</div>
+  </form>
+</div>
+
+<script>
+(function(){
+  emailjs.init("WcMFHvC566CcQz3Os"); // 🔑 GANTI
+})();
+
+function openForm(){
+  document.getElementById('formOverlay').style.display='block';
+}
+
+function downloadVCF(){
+  const vcf=`BEGIN:VCARD
+VERSION:3.0
+FN:Andrea Rey Y
+TEL:+628996977888
+END:VCARD`;
+  const blob=new Blob([vcf],{type:"text/vcard"});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download="contact.vcf";
+  a.click();
+}
+
+function sendForm(e){
+  e.preventDefault();
+
+  emailjs.send(
+    "service_lwfbqfc",   // 🔑 GANTI
+    "template_d5l7weg",  // 🔑 GANTI
+    {
+      name: name.value,
+      email: email.value,
+      phone: phone.value
+    }
+  ).then(()=>{
+    downloadVCF();
+    alert("Contact saved!");
+    document.getElementById('formOverlay').style.display='none';
+  }).catch(()=>{
+    alert("Failed to send email");
+  });
+}
+</script>
+
+</body>
+</html>

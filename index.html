@@ -320,43 +320,50 @@ body{
 
 <script>
 (function(){
-  emailjs.init("WcMFHvC566CcQz3Os"); // 🔑 GANTI
+  emailjs.init("WcMFHvC566CcQz3Os");
 })();
 
 function openForm(){
-  document.getElementById('formOverlay').style.display='block';
+  document.getElementById('formOverlay').style.display = 'block';
 }
 
 function downloadVCF(){
-  const vcf=`BEGIN:VCARD
+  const vcf = `BEGIN:VCARD
 VERSION:3.0
 FN:Andrea Rey Y
 TEL:+628996977888
 END:VCARD`;
-  const blob=new Blob([vcf],{type:"text/vcard"});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download="contact.vcf";
+
+  const blob = new Blob([vcf], { type: "text/vcard" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "contact.vcf";
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
 }
 
 function sendForm(e){
   e.preventDefault();
 
+  const nameInput  = document.getElementById("name").value;
+  const emailInput = document.getElementById("email").value;
+  const phoneInput = document.getElementById("phone").value;
+
   emailjs.send(
-    "service_lwfbqfc",   // 🔑 GANTI
-    "template_d5l7weg",  // 🔑 GANTI
+    "service_lwfbqfc",
+    "template_d5l7weg",
     {
-      name: name.value,
-      email: email.value,
-      phone: phone.value
+      name: nameInput,
+      email: emailInput,
+      phone: phoneInput
     }
-  ).then(()=>{
+  ).then(() => {
     downloadVCF();
-    alert("Contact saved!");
-    document.getElementById('formOverlay').style.display='none';
-  }).catch(()=>{
+    document.getElementById("formOverlay").style.display = "none";
+  }).catch((error) => {
     alert("Failed to send email");
+    console.error(error);
   });
 }
 </script>

@@ -3,276 +3,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Business Card</title>
-<!-- Tambahkan logo favicon -->
+<title>Neumorphism Digital Card</title>
 <link rel="icon" type="image/ico" href="favicon.ico">
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif
+/* --- VARIABEL WARNA --- */
+:root {
+  --bg-color: #e0e5ec;
+  --text-main: #4d4d4d;
+  --text-sub: #8993a4;
+  --shadow-light: #ffffff;
+  --shadow-dark: #a3b1c6;
+  --accent-red: #ef4444;
+  --accent-green: #25D366;
+  --accent-blue: #2563eb;
 }
 
-body{
-  margin:0;
-  background:#eef1f5;
-  display:flex;
-  justify-content:center;
-  padding-bottom:120px
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent; /* Hilangkan highlight biru di mobile */
 }
 
-/* CARD */
-.card{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 18px 40px rgba(0,0,0,.18)
+body {
+  margin: 0;
+  background: var(--bg-color); /* Warna background sama dengan kartu */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 120px;
+  color: var(--text-main);
 }
 
-/* HEADER */
-.header{
-  position:relative;
-  height:300px;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* --- KARTU UTAMA --- */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-color);
+  border-radius: 30px;
+  /* Neumorphism Shadow: Timbul */
+  box-shadow: 9px 9px 16px var(--shadow-dark), 
+              -9px -9px 16px var(--shadow-light);
+  margin-top: 20px;
+  padding-bottom: 30px;
+  position: relative;
+  overflow: hidden; /* Agar sudut tetap bulat */
 }
 
-.header img{
-  width:78%;
-  max-width:300px;
-  z-index:2;
+/* --- HEADER --- */
+/* Kita buat header sedikit "tenggelam" atau flat dengan frame */
+.header {
+  position: relative;
+  height: 280px;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  /* Inset shadow lembut untuk memisahkan header */
+  box-shadow: inset 5px 5px 10px var(--shadow-dark), 
+              inset -5px -5px 10px var(--shadow-light);
+  margin: 15px; /* Memberi jarak agar terlihat seperti layar di dalam casing */
+  border-radius: 20px;
 }
 
-/* CONTENT */
-.content{
-  padding:30px 26px 40px
+.header img {
+  width: 85%;
+  max-width: 300px;
+  z-index: 2;
+  filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.2)); /* Bayangan pada objek gambar */
 }
 
-/* NAME + LOGO */
-.name-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:28px
+/* --- CONTENT --- */
+.content {
+  padding: 20px 30px;
 }
 
-.name{
-  font-size:30px;
-  font-weight:700;
-  color:#111827;
-  padding-left:14px;
-  position:relative;
-  margin:0
+/* --- NAME + LOGO --- */
+.name-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 35px;
 }
 
-.name:before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:4px;
-  width:3px;
-  height:85%;
-  background:#ef4444;
-  border-radius:4px
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  padding-left: 20px;
+  position: relative;
+  margin: 0;
+  text-shadow: 1px 1px 1px #fff; /* Efek teks timbul halus */
 }
 
-.name-logo img{
-  width:56px;
-  height:56px;
-  border-radius:12px;
-  object-fit:cover
+/* Aksen merah di samping nama */
+.name:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 80%;
+  background: var(--accent-red);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ROW */
-.row{
-  display:flex;
-  align-items:center;
-  margin-bottom:20px
+/* Frame Logo */
+.name-logo {
+  padding: 5px;
+  border-radius: 18px;
+  background: var(--bg-color);
+  box-shadow: 5px 5px 10px var(--shadow-dark), 
+              -5px -5px 10px var(--shadow-light);
 }
 
-.icon{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:#ef4444;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-right:16px
+.name-logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  object-fit: cover;
+  display: block;
 }
 
-.icon svg{
-  width:22px;
-  height:22px;
-  fill:#fff
+/* --- ROW (CONTACT LIST) --- */
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 20px;
+  /* Efek timbul halus pada setiap baris kontak */
+  box-shadow: 5px 5px 10px var(--shadow-dark), 
+              -5px -5px 10px var(--shadow-light);
+  transition: transform 0.2s ease;
 }
 
-.icon.whatsapp{
-  background:#25D366;
+.row:active {
+  /* Efek ditekan */
+  box-shadow: inset 3px 3px 7px var(--shadow-dark), 
+              inset -3px -3px 7px var(--shadow-light);
+  transform: scale(0.98);
 }
 
-.text{
-  font-size:16px;
-  color:#111827
+/* Icon Container */
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  /* Shadow khusus untuk tombol bulat */
+  box-shadow: 3px 3px 6px var(--shadow-dark), 
+              -3px -3px 6px var(--shadow-light);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.sub{
-  font-size:13px;
-  color:#6b7280;
-  margin-top:2px
+/* Warna icon */
+.icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--accent-red); /* Icon merah */
+  filter: drop-shadow(1px 1px 1px rgba(255,255,255,0.8));
 }
 
-/* FLOATING SAVE */
-.floating-save{
-  position:fixed;
-  bottom:78px;
-  width:100%;
-  max-width:420px;
-  display:flex;
-  justify-content:center;
-  z-index:999
+.icon.whatsapp svg {
+  fill: var(--accent-green); /* Icon WA hijau */
 }
 
-.floating-save button{
-  width:90%;
-  background:#ef4444;
-  color:#fff;
-  font-weight:700;
-  border:none;
-  padding:16px;
-  border-radius:14px;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 12px 25px rgba(239,68,68,.45)
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
 }
 
-/* FOOTER */
-.footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  max-width:420px;
-  background:#f15a4a;
-  color:#fff;
-  text-align:center;
-  padding:14px;
-  font-size:14px;
-  border-top-left-radius:22px;
-  border-top-right-radius:22px
+.sub {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 4px;
 }
 
-/* FORM OVERLAY */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:#fff;
-  z-index:2000;
-  display:none;
-  flex-direction:column
+/* --- FLOATING SAVE BUTTON --- */
+.floating-save {
+  position: fixed;
+  bottom: 85px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none; /* Agar area kosong tembus klik */
 }
 
-.overlay-header{
-  padding:22px;
-  font-size:22px;
-  font-weight:700
+.floating-save button {
+  pointer-events: auto;
+  width: 85%;
+  background: var(--bg-color);
+  color: var(--accent-red);
+  font-weight: 800;
+  border: none;
+  padding: 18px;
+  border-radius: 50px; /* Bentuk Pill */
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  /* Timbul kuat */
+  box-shadow: 8px 8px 16px var(--shadow-dark), 
+              -8px -8px 16px var(--shadow-light);
+  transition: all 0.2s ease;
 }
 
-.overlay form{
-  padding:0 22px 30px
+.floating-save button:active {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+              inset -4px -4px 8px var(--shadow-light);
+  color: #c0392b;
 }
 
-.field{
-  margin-bottom:20px
+
+/* --- FORM OVERLAY (Neumorphic) --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-color);
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
 }
 
-.field label{
-  font-size:14px;
-  color:#6b7280;
-  display:block;
-  margin-bottom:6px
+.overlay-header {
+  padding: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
 }
 
-.field input{
-  width:100%;
-  border:none;
-  border-bottom:1px solid #d1d5db;
-  padding:10px 0;
-  font-size:16px
+.overlay form {
+  padding: 0 30px 40px;
 }
 
-.submit-btn{
-  margin-top:30px;
-  width:100%;
-  background:#2563eb;
-  color:#fff;
-  border:none;
-  padding:16px;
-  font-size:18px;
-  border-radius:14px;
-  font-weight:700;
-  cursor:pointer;
-  transition:all 0.3s ease;
-  position:relative;
-  overflow:hidden;
+.field {
+  margin-bottom: 25px;
 }
 
-.submit-btn:disabled{
-  background:#1e40af;
-  cursor:not-allowed;
+.field label {
+  font-size: 14px;
+  color: var(--text-sub);
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  margin-left: 10px;
 }
 
-/* Animasi downloading */
-.downloading-dots {
-  display:inline-block;
-  width:20px;
-  text-align:left;
+.field input {
+  width: 100%;
+  border: none;
+  background: var(--bg-color);
+  padding: 16px 20px;
+  font-size: 16px;
+  border-radius: 50px; /* Input bulat */
+  color: var(--text-main);
+  outline: none;
+  /* INSET SHADOW: Kesan masuk ke dalam */
+  box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+              inset -6px -6px 12px var(--shadow-light);
+  transition: all 0.3s ease;
 }
 
-.downloading-dots::after {
-  content:'...';
-  animation:dots 1.5s steps(4, end) infinite;
+.field input:focus {
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), 
+              inset -3px -3px 6px var(--shadow-light);
+  color: var(--accent-blue);
 }
 
-@keyframes dots {
-  0%, 20% { content:'.'; }
-  40% { content:'..'; }
-  60%, 100% { content:'...'; }
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: var(--bg-color); /* Warna dasar */
+  color: var(--accent-blue);
+  border: none;
+  padding: 18px;
+  font-size: 18px;
+  border-radius: 50px;
+  font-weight: 800;
+  cursor: pointer;
+  /* Efek timbul */
+  box-shadow: 6px 6px 12px var(--shadow-dark), 
+              -6px -6px 12px var(--shadow-light);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.submit-btn.loading {
-  background:#1e40af;
+.submit-btn:active {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+              inset -4px -4px 8px var(--shadow-light);
 }
 
-/* Loading spinner */
+.submit-btn:disabled {
+  color: var(--text-sub);
+  cursor: not-allowed;
+  box-shadow: none;
+  background: #e0e5ec;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* Spinner & Loading (Sama seperti sebelumnya tapi disesuaikan warna) */
 .spinner {
-  display:none;
-  width:20px;
-  height:20px;
-  border:3px solid rgba(255,255,255,0.3);
-  border-radius:50%;
-  border-top-color:#fff;
-  animation:spin 1s ease-in-out infinite;
-  margin-right:10px;
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(37, 99, 235, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-blue);
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-@keyframes spin {
-  to { transform:rotate(360deg); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.submit-btn.loading .spinner { display: inline-block; }
+
+.privacy {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-top: 25px;
 }
 
-.submit-btn.loading .spinner {
-  display:inline-block;
-}
-
-.privacy{
-  text-align:center;
-  font-size:13px;
-  color:#6b7280;
-  margin-top:14px
+/* Helper untuk tombol tutup overlay */
+.close-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: none;
+  color: var(--text-sub);
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
 }
 </style>
 </head>
@@ -281,7 +361,6 @@ body{
 
 <div class="card">
 
-  <!-- HEADER -->
   <div class="header">
     <img src="https://i.postimg.cc/fL7RP8Cm/Pics-Art-01-03-03-07-40.png" alt="Header Image">
   </div>
@@ -295,84 +374,81 @@ body{
       </div>
     </div>
 
-    <!-- PHONE -->
-    <div class="row">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2
-          19.86 19.86 0 0 1-8.63-3.07
-          19.5 19.5 0 0 1-6-6
-          19.86 19.86 0 0 1-3.07-8.67
-          A2 2 0 0 1 4.11 2h3
-          a2 2 0 0 1 2 1.72
-          c.12.9.3 1.77.57 2.6
-          a2 2 0 0 1-.45 2.11L8.09 9.91
-          a16 16 0 0 0 6 6
-          l1.48-1.48
-          a2 2 0 0 1 2.11-.45
-          c.83.27 1.7.45 2.6.57
-          A2 2 0 0 1 22 16.92z"/>
-        </svg>
+    <a href="tel:+628996977888" style="text-decoration:none">
+      <div class="row">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+            19.86 19.86 0 0 1-8.63-3.07
+            19.5 19.5 0 0 1-6-6
+            19.86 19.86 0 0 1-3.07-8.67
+            A2 2 0 0 1 4.11 2h3
+            a2 2 0 0 1 2 1.72
+            c.12.9.3 1.77.57 2.6
+            a2 2 0 0 1-.45 2.11L8.09 9.91
+            a16 16 0 0 0 6 6
+            l1.48-1.48
+            a2 2 0 0 1 2.11-.45
+            c.83.27 1.7.45 2.6.57
+            A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text">+62 899 6977 888</div>
+          <div class="sub">Mobile</div>
+        </div>
       </div>
-      <div>
-        <div class="text">+62 899 6977 888</div>
-        <div class="sub">Mobile</div>
-      </div>
-    </div>
+    </a>
 
-    <!-- WHATSAPP -->
-    <div class="row">
-      <div class="icon whatsapp">
-        <svg viewBox="0 0 32 32">
-          <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.18-.32.21-.6.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.53c-.18 0-.46.07-.7.35-.25.28-.92.9-.92 2.2s.94 2.55 1.07 2.73c.14.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.20 1.2.17 1.65.1.5-.07 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32zM16 3C8.82 3 3 8.6 3 15.5c0 2.73.95 5.26 2.53 7.3L4 29l6.4-1.68c1.94 1.03 4.16 1.61 5.6 1.61 7.18 0 13-5.6 13-12.5S23.18 3 16 3z"/>
-        </svg>
+    <a href="https://wa.me/16096160899" target="_blank" style="text-decoration:none">
+      <div class="row">
+        <div class="icon whatsapp">
+          <svg viewBox="0 0 32 32">
+            <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.18-.32.21-.6.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.53c-.18 0-.46.07-.7.35-.25.28-.92.9-.92 2.2s.94 2.55 1.07 2.73c.14.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.20 1.2.17 1.65.1.5-.07 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32zM16 3C8.82 3 3 8.6 3 15.5c0 2.73.95 5.26 2.53 7.3L4 29l6.4-1.68c1.94 1.03 4.16 1.61 5.6 1.61 7.18 0 13-5.6 13-12.5S23.18 3 16 3z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text">+1 609 616 0899</div>
+          <div class="sub">WhatsApp</div>
+        </div>
       </div>
-      <div>
-        <a class="text" href="https://wa.me/16096160899" target="_blank" style="text-decoration:none;color:#111827">
-          +1 609 616 0899
-        </a>
-        <div class="sub">WhatsApp</div>
-      </div>
-    </div>
+    </a>
 
   </div>
-</div>
+  
 
-<!-- FORM -->
 <div class="floating-save">
-  <button onclick="openForm()">⬇️ SAVE CONTACT</button>
+  <button onclick="openForm()">⬇ SAVE CONTACT</button>
 </div>
 
-
-<!-- FORM -->
 <div class="overlay" id="formOverlay">
-  <div class="overlay-header">Share your information</div>
+  <button class="close-overlay" onclick="closeForm()">×</button>
+  <div class="overlay-header">Share Information</div>
 
   <form onsubmit="sendForm(event)">
     <div class="field">
-      <label>Your name</label>
-      <input id="name" required>
+      <label>Your Name</label>
+      <input id="name" required placeholder="Type your name...">
     </div>
 
     <div class="field">
-      <label>Your email</label>
-      <input id="email" type="email" required>
+      <label>Email Address</label>
+      <input id="email" type="email" required placeholder="name@example.com">
     </div>
 
     <div class="field">
-      <label>Your phone number</label>
-      <input id="phone" required>
+      <label>Phone Number</label>
+      <input id="phone" required placeholder="+62...">
     </div>
 
     <button class="submit-btn" id="continueBtn">
       <span class="spinner"></span>
-      <span class="btn-text">Continue</span>
+      <span class="btn-text">Download Contact</span>
     </button>
-    <div class="privacy">🔒 Your data will always be kept private.</div>
+    <div class="privacy">🔒 Data is processed locally and secure.</div>
   </form>
 </div>
 
-<!-- EMAILJS (WAJIB) -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
 (function(){
@@ -380,7 +456,11 @@ body{
 })();
 
 function openForm(){
-  document.getElementById('formOverlay').style.display = 'block';
+  document.getElementById('formOverlay').style.display = 'flex';
+}
+
+function closeForm(){
+  document.getElementById('formOverlay').style.display = 'none';
 }
 
 function downloadVCF(){
@@ -398,28 +478,25 @@ END:VCARD`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  
-  // Simulasi waktu download (bisa dihapus jika tidak perlu)
+   
   return new Promise(resolve => setTimeout(resolve, 1500));
 }
 
 async function sendForm(e){
   e.preventDefault();
-  
+   
   const submitBtn = document.getElementById('continueBtn');
   const btnText = submitBtn.querySelector('.btn-text');
-  
-  // Tampilkan animasi downloading
+   
   submitBtn.disabled = true;
   submitBtn.classList.add('loading');
-  btnText.innerHTML = 'DOWNLOADING<span class="downloading-dots"></span>';
-  
+  btnText.innerText = 'Processing...';
+   
   const nameInput  = document.getElementById("name").value;
   const emailInput = document.getElementById("email").value;
   const phoneInput = document.getElementById("phone").value;
 
   try {
-    // Kirim email
     await emailjs.send(
       "service_lwfbqfc",
       "template_d5l7weg",
@@ -429,39 +506,23 @@ async function sendForm(e){
         phone: phoneInput
       }
     );
-    
-    // Download VCF
+     
     await downloadVCF();
-    
-    // Reset form dan tutup overlay
-    document.getElementById("formOverlay").style.display = "none";
+     
+    closeForm();
     e.target.reset();
-    
-    // Tampilkan notifikasi sukses
     alert("Contact saved successfully!");
-    
+     
   } catch (error) {
-    alert("Failed to send email. Please try again.");
+    alert("Failed to send data, but downloading contact anyway.");
+    await downloadVCF(); // Tetap download walau email gagal
     console.error(error);
   } finally {
-    // Kembalikan tombol ke keadaan semula
     submitBtn.disabled = false;
     submitBtn.classList.remove('loading');
-    btnText.innerHTML = 'Continue';
+    btnText.innerText = 'Download Contact';
   }
 }
-
-// Reset tombol ketika form dibuka kembali
-document.getElementById('formOverlay').addEventListener('click', function(e) {
-  if(e.target === this) {
-    const submitBtn = document.getElementById('continueBtn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    
-    submitBtn.disabled = false;
-    submitBtn.classList.remove('loading');
-    btnText.innerHTML = 'Continue';
-  }
-});
 </script>
 
 </body>

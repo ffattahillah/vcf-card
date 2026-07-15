@@ -22,35 +22,31 @@
 * {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  -webkit-tap-highlight-color: transparent; /* Hilangkan highlight biru di mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-  background: var(--bg-color); /* Warna background sama dengan kartu */
+  background: var(--bg-color);
   display: flex;
   justify-content: center;
   padding-bottom: 120px;
   color: var(--text-main);
 }
 
-/* --- KARTU UTAMA --- */
 .card {
   width: 100%;
   max-width: 420px;
   background: var(--bg-color);
   border-radius: 30px;
-  /* Neumorphism Shadow: Timbul */
   box-shadow: 9px 9px 16px var(--shadow-dark), 
               -9px -9px 16px var(--shadow-light);
   margin-top: 20px;
   padding-bottom: 30px;
   position: relative;
-  overflow: hidden; /* Agar sudut tetap bulat */
+  overflow: hidden;
 }
 
-/* --- HEADER --- */
-/* Kita buat header sedikit "tenggelam" atau flat dengan frame */
 .header {
   position: relative;
   height: 280px;
@@ -60,10 +56,9 @@ body {
   justify-content: center;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  /* Inset shadow lembut untuk memisahkan header */
   box-shadow: inset 5px 5px 10px var(--shadow-dark), 
               inset -5px -5px 10px var(--shadow-light);
-  margin: 15px; /* Memberi jarak agar terlihat seperti layar di dalam casing */
+  margin: 15px;
   border-radius: 20px;
 }
 
@@ -71,15 +66,13 @@ body {
   width: 85%;
   max-width: 300px;
   z-index: 2;
-  filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.2)); /* Bayangan pada objek gambar */
+  filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.2));
 }
 
-/* --- CONTENT --- */
 .content {
   padding: 20px 30px;
 }
 
-/* --- NAME + LOGO --- */
 .name-wrap {
   display: flex;
   align-items: center;
@@ -92,27 +85,19 @@ body {
   font-size: 28px;
   font-weight: 700;
   color: var(--text-main);
-  padding-left: 20px;
-  position: relative;
   margin: 0;
-  text-shadow: 1px 1px 1px #fff; /* Efek teks timbul halus */
+  padding: 8px 20px;
+  background: var(--bg-color);
+  border-radius: 16px;
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark), 
+    -4px -4px 8px var(--shadow-light);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+  display: inline-block;
+  position: relative;
+  line-height: 1.3;
 }
 
-/* Aksen merah di samping nama */
-.name:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 80%;
-  background: var(--accent-red);
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Frame Logo */
 .name-logo {
   padding: 5px;
   border-radius: 18px;
@@ -129,27 +114,23 @@ body {
   display: block;
 }
 
-/* --- ROW (CONTACT LIST) --- */
 .row {
   display: flex;
   align-items: center;
   margin-bottom: 25px;
   padding: 15px;
   border-radius: 20px;
-  /* Efek timbul halus pada setiap baris kontak */
   box-shadow: 5px 5px 10px var(--shadow-dark), 
               -5px -5px 10px var(--shadow-light);
   transition: transform 0.2s ease;
 }
 
 .row:active {
-  /* Efek ditekan */
   box-shadow: inset 3px 3px 7px var(--shadow-dark), 
               inset -3px -3px 7px var(--shadow-light);
   transform: scale(0.98);
 }
 
-/* Icon Container */
 .icon {
   width: 50px;
   height: 50px;
@@ -159,22 +140,25 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  /* Shadow khusus untuk tombol bulat */
   box-shadow: 3px 3px 6px var(--shadow-dark), 
               -3px -3px 6px var(--shadow-light);
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Warna icon */
 .icon svg {
   width: 24px;
   height: 24px;
-  fill: var(--accent-red); /* Icon merah */
+  fill: var(--accent-red);
   filter: drop-shadow(1px 1px 1px rgba(255,255,255,0.8));
 }
 
 .icon.whatsapp svg {
-  fill: var(--accent-green); /* Icon WA hijau */
+  fill: var(--accent-green);
+}
+
+/* Tambahan untuk ikon email */
+.icon.email svg {
+  fill: var(--accent-blue);
 }
 
 .text {
@@ -190,7 +174,6 @@ body {
   margin-top: 4px;
 }
 
-/* --- FLOATING SAVE BUTTON --- */
 .floating-save {
   position: fixed;
   bottom: 85px;
@@ -199,7 +182,7 @@ body {
   display: flex;
   justify-content: center;
   z-index: 999;
-  pointer-events: none; /* Agar area kosong tembus klik */
+  pointer-events: none;
 }
 
 .floating-save button {
@@ -210,11 +193,10 @@ body {
   font-weight: 800;
   border: none;
   padding: 18px;
-  border-radius: 50px; /* Bentuk Pill */
+  border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
   letter-spacing: 1px;
-  /* Timbul kuat */
   box-shadow: 8px 8px 16px var(--shadow-dark), 
               -8px -8px 16px var(--shadow-light);
   transition: all 0.2s ease;
@@ -226,7 +208,6 @@ body {
   color: #c0392b;
 }
 
-/* --- FORM OVERLAY (Neumorphic) --- */
 .overlay {
   position: fixed;
   inset: 0;
@@ -267,10 +248,9 @@ body {
   background: var(--bg-color);
   padding: 16px 20px;
   font-size: 16px;
-  border-radius: 50px; /* Input bulat */
+  border-radius: 50px;
   color: var(--text-main);
   outline: none;
-  /* INSET SHADOW: Kesan masuk ke dalam */
   box-shadow: inset 6px 6px 12px var(--shadow-dark), 
               inset -6px -6px 12px var(--shadow-light);
   transition: all 0.3s ease;
@@ -285,7 +265,7 @@ body {
 .submit-btn {
   margin-top: 20px;
   width: 100%;
-  background: var(--bg-color); /* Warna dasar */
+  background: var(--bg-color);
   color: var(--accent-blue);
   border: none;
   padding: 18px;
@@ -293,7 +273,6 @@ body {
   border-radius: 50px;
   font-weight: 800;
   cursor: pointer;
-  /* Efek timbul */
   box-shadow: 6px 6px 12px var(--shadow-dark), 
               -6px -6px 12px var(--shadow-light);
   transition: all 0.2s ease;
@@ -314,7 +293,6 @@ body {
   border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* Spinner & Loading (Sama seperti sebelumnya tapi disesuaikan warna) */
 .spinner {
   display: none;
   width: 20px;
@@ -337,7 +315,6 @@ body {
   margin-top: 25px;
 }
 
-/* Helper untuk tombol tutup overlay */
 .close-overlay {
   position: absolute;
   top: 20px;
@@ -403,7 +380,7 @@ body {
       <div class="row">
         <div class="icon whatsapp">
           <svg viewBox="0 0 32 32">
-            <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.70.90-.86 1.09-.16.18-.32.21-.60.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.53c-.18 0-.46.07-.70.35-.25.28-.92.90-.92 2.20s.94 2.55 1.07 2.73c.14.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.50.55.63.20 1.20.17 1.65.10.50-.07 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32zM16 3C8.82 3 3 8.60 3 15.50c0 2.73.95 5.26 2.53 7.30L4 29l6.40-1.68c1.94 1.03 4.16 1.61 5.60 1.61 7.18 0 13-5.60 13-12.50S23.18 3 16 3z"/>
+            <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.18-.32.21-.6.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46h-.53c-.18 0-.46.07-.7.35-.25.28-.92.9-.92 2.2s.94 2.55 1.07 2.73c.14.18 1.85 2.83 4.48 3.97.63.27 1.12.43 1.5.55.63.20 1.2.17 1.65.1.5-.07 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32zM16 3C8.82 3 3 8.6 3 15.5c0 2.73.95 5.26 2.53 7.3L4 29l6.4-1.68c1.94 1.03 4.16 1.61 5.6 1.61 7.18 0 13-5.6 13-12.5S23.18 3 16 3z"/>
           </svg>
         </div>
         <div>
@@ -413,9 +390,22 @@ body {
       </div>
     </a>
 
+    <!-- Bagian Email Baru -->
+    <a href="mailto:andrearey@duck.com" style="text-decoration:none">
+      <div class="row">
+        <div class="icon email">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text">andrearey@duck.com</div>
+          <div class="sub">Email</div>
+        </div>
+      </div>
+    </a>
+
   </div>
-  <!-- Footer telah dihapus -->
-</div>
 
 <div class="floating-save">
   <button onclick="openForm()">⬇ SAVE CONTACT</button>
@@ -515,7 +505,7 @@ async function sendForm(e){
      
   } catch (error) {
     alert("Failed to send data, but downloading contact anyway.");
-    await downloadVCF(); // Tetap download walau email gagal
+    await downloadVCF();
     console.error(error);
   } finally {
     submitBtn.disabled = false;

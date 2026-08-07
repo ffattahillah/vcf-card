@@ -34,6 +34,54 @@ body {
   color: var(--text-main);
 }
 
+/* ========== LOADER OVERLAY (PEMBUKA) ========== */
+.loader-overlay {
+  --ld-bg: #e0e0e0;
+  --ld-shadow-dark: #bebebe;
+  --ld-shadow-light: #ffffff;
+  --ld-dot-size: 14px;
+
+  position: fixed;
+  inset: 0;
+  background: var(--ld-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  display: flex;
+  gap: 12px;
+}
+
+.loader span {
+  width: var(--ld-dot-size);
+  height: var(--ld-dot-size);
+  border-radius: 50%;
+  background: var(--ld-bg);
+  box-shadow: 6px 6px 12px var(--ld-shadow-dark),
+             -6px -6px 12px var(--ld-shadow-light);
+  animation: neumorphPulse 1.2s infinite ease-in-out;
+}
+
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes neumorphPulse {
+  0%, 100% {
+    box-shadow: 6px 6px 12px var(--ld-shadow-dark),
+               -6px -6px 12px var(--ld-shadow-light);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: inset 4px 4px 8px var(--ld-shadow-dark),
+                inset -4px -4px 8px var(--ld-shadow-light);
+    transform: scale(1.25);
+  }
+}
+/* ========== AKHIR LOADER ========== */
+
 .card {
   width: 100%;
   max-width: 420px;
@@ -156,7 +204,6 @@ body {
   fill: var(--accent-green);
 }
 
-/* Tambahan untuk ikon email */
 .icon.email svg {
   fill: var(--accent-blue);
 }
@@ -335,6 +382,15 @@ body {
 
 <body>
 
+<!-- LOADER PEMBUKA -->
+<div class="loader-overlay" id="loaderOverlay">
+  <div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
 <div class="card">
 
   <div class="header">
@@ -390,7 +446,6 @@ body {
       </div>
     </a>
 
-    <!-- Bagian Email Baru -->
     <a href="mailto:andrearey@duck.com" style="text-decoration:none">
       <div class="row">
         <div class="icon email">
@@ -428,7 +483,7 @@ body {
 
     <div class="field">
       <label>Phone Number</label>
-      <input id="phone" required placeholder="+62...">
+      <input type="tel" id="phone" required placeholder="+62...">
     </div>
 
     <button class="submit-btn" id="continueBtn">
@@ -444,6 +499,19 @@ body {
 (function(){
   emailjs.init("WcMFHvC566CcQz3Os");
 })();
+
+/* HILANGKAN LOADER SETELAH HALAMAN SELESAI DIMUAT */
+window.addEventListener('load', function() {
+  const loader = document.getElementById('loaderOverlay');
+  if (loader) {
+    // opsional: tambahkan transisi halus
+    loader.style.transition = 'opacity 0.4s ease';
+    loader.style.opacity = '0';
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 400);
+  }
+});
 
 function openForm(){
   document.getElementById('formOverlay').style.display = 'flex';
